@@ -31,7 +31,21 @@ export default function ProductDetailsScreen() {
 
   return (
     <View style={styles.screen}>
-      <Stack.Screen options={{ title: p.name }} />
+      <Stack.Screen
+        options={{
+          title: p.name,
+          headerRight: () => (
+            <Pressable
+              onPress={vm.toggleSaved}
+              hitSlop={8}
+              accessibilityRole="button"
+              accessibilityLabel={vm.isSaved ? 'Remove from wishlist' : 'Save to wishlist'}
+            >
+              <Ionicons name={vm.isSaved ? 'heart' : 'heart-outline'} size={24} color={vm.isSaved ? colors.danger : colors.ink} />
+            </Pressable>
+          ),
+        }}
+      />
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.imageWrap}>
           <ProductThumb product={p} size={imageSize} />

@@ -2,6 +2,8 @@
 // Holds the chosen flavor, size and quantity and works out the total price.
 
 import { useEffect, useState } from 'react';
+import { useCart } from '@/context/CartContext';
+import { useWishlist } from '@/context/WishlistContext';
 import { productRepository } from '@/services/productService';
 import { useAsyncData } from './useAsyncData';
 
@@ -18,6 +20,8 @@ export function useProductDetailsViewModel(id: string | undefined) {
   const [sizeIndex, setSizeIndex] = useState(0);
   const [quantity, setQuantity] = useState(MIN_QUANTITY);
   const [feedback, setFeedback] = useState<{ type: 'error' | 'success'; text: string } | null>(null);
+  const { addItem } = useCart();
+  const { isInWishlist, toggleWishlist } = useWishlist();
 
   // Pick sensible defaults as soon as the product arrives.
   useEffect(() => {
@@ -65,7 +69,17 @@ export function useProductDetailsViewModel(id: string | undefined) {
       setFeedback({ type: 'error', text: error });
       return;
     }
-    // TODO (Saif Nasr, Cart screen): call the CartContext addItem function here.
+    addItem({
+      id: `${p!.id}:${flavor ?? 'unflavored'}:${size!.label}`,
+      productId: p!.id,
+      name: p!.name,
+      brand: p!.brand,
+      flavor: flavor ?? 'Unflavored',
+      weight: size!.label,
+      price: size!.price,
+      stock: MAX_QUANTITY,
+      quantity,
+    });
     setFeedback({
       type: 'success',
       text: `Added ${quantity} × ${p!.name} (${flavor}, ${size!.label}) to your cart.`,
@@ -87,6 +101,8 @@ export function useProductDetailsViewModel(id: string | undefined) {
     canDecrease: quantity > MIN_QUANTITY,
     total,
     addToCart,
+    isSaved: p ? isInWishlist(p.id) : false,
+    toggleSaved: () => p && toggleWishlist(p.id),
     feedback,
     retry: product.reload,
   };

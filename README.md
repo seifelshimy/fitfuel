@@ -26,7 +26,7 @@ npx expo start           # scan the QR code with Expo Go, or press w for web
 | --- | --- |
 | `npx expo start` | Start the dev server (Expo Go, Android, iOS, web) |
 | `npm run typecheck` | Type check (`tsc --noEmit`) |
-| `npm test` | Run all unit tests (`jest`) |
+| `npm test` | Run all 90 unit tests (`jest`) |
 
 Never commit `.env`. It is in `.gitignore`; commit `.env.example` instead.
 
@@ -236,7 +236,7 @@ To reset the demo data, clear the app's storage (or site data on web).
 
 ### Tests
 
-`npx jest` runs 48 unit tests (config in `jest.config.js`):
+Saif's two test files hold 48 of the project's 90 unit tests (config in `jest.config.js`):
 
 - **`__tests__/cartPricing.test.ts`**
   - `clampQuantity`
