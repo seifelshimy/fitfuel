@@ -47,3 +47,5 @@ yarn-error.*
 .env
 node_modules/
 .expo/
+
+.claude/
