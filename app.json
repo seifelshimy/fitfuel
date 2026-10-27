@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "fitfuel",
+    "name": "FitFuel",
     "slug": "fitfuel",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -20,6 +20,20 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-status-bar",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "FitFuel uses your location to pin the delivery address for your order."
+        }
+      ]
+    ],
+    "scheme": "fitfuel",
+    "experiments": {
+      "typedRoutes": true
     }
   }
 }

@@ -1,0 +1,9 @@
+# AI Engineering Log
+
+Every use of an AI tool on this branch is recorded here.
+
+| Date | Member | Tool | What we asked | What it produced | What we changed | How we checked it |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026-10-27 | Saif Nasr (ID: 242769) | Claude (Anthropic) | Build my three screens (Cart, Checkout, Orders) on the `saif` branch with strict MVVM: an order model, pricing and validation utils, services (AsyncStorage, `expo-location`, `expo-file-system`, Google Geocoding, Firestore REST), `CartContext`, and one ViewModel per screen | `models/order.ts`, `utils/cartPricing.ts`, `utils/checkoutValidation.ts`, four services, `CartContext`, three ViewModels, `CartItemCard`, `OrderStatusCard`, `LocationPicker`, a platform-split `DeliveryMap`, the three screens and the tab/stack layouts | _Fill in: what you reviewed, renamed or rewrote_ | Ran `npx tsc --noEmit` (0 errors) and `npx jest` (45 passing). Exported web and Android bundles; the web bundle contains no `react-native-maps` code. _Add your own test on a phone with Expo Go._ |
+| 2026-10-27 | Saif Nasr (ID: 242769) | Claude (Anthropic) | Make checkout safe on web and Expo Go, where `react-native-maps` can crash | `DeliveryMap.native.tsx` (map inside an error boundary) and a web `DeliveryMap.tsx` that never imports the map, plus the coordinate selector card with Cairo presets, pin nudging and GPS | _Fill in_ | Checked that the web export contains no map code and that the Android bundle includes it. _Test the flow in the browser and pin placement on a device._ |
+| 2026-10-27 | Saif Nasr (ID: 242769) | Claude (Anthropic) | Write unit tests for the pricing and checkout validation rules | `__tests__/cartPricing.test.ts` and `__tests__/checkoutValidation.test.ts` | _Fill in_ | `npx jest`: 2 suites, 45 tests passing |
