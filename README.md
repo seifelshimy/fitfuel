@@ -2,7 +2,7 @@
 
 A supplement store app built with React Native, Expo (SDK 58), Expo Router and TypeScript, using the MVVM pattern.
 
-**Member:** Saif Nasr, ID 242769. **Branch:** `saif`.
+**Member:** Saif Nasr, ID 242769. **Branch:** `saif_242769`.
 
 This branch contains Saif's three screens (Cart, Checkout, Orders) plus the shared base files: theme, `PrimaryButton`, `StateViews` and `utils/format.ts`.
 
@@ -135,4 +135,4 @@ To reset the demo data, clear the app's storage (or site data on web).
 
 ## Git workflow
 
-Work is committed on the `saif` branch from Saif's own GitHub account, then merged into `develop` through a pull request.
+Work is committed on the `saif_242769` branch from Saif's own GitHub account, then merged into `develop` through a pull request.
