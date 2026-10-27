@@ -30,7 +30,31 @@ npx expo start           # scan the QR code with Expo Go, or press w for web
 
 Never commit `.env`. It is in `.gitignore`; commit `.env.example` instead.
 
-<!-- MEMBER SECTIONS -->
+## Ahmed Mohamed
+
+### Screens and shared base
+
+- `src/app/(tabs)/index.tsx`: Home, with categories, featured products, category rows and pull-to-refresh
+- `src/app/product/[id].tsx`: Product details, with flavor, size, quantity, nutrition facts and add to cart
+- `src/app/(tabs)/search.tsx`: Search & filter, with debounced search and a filter sheet (category, goal, flavor, price range, sort)
+- ViewModels: `useHomeViewModel`, `useProductDetailsViewModel`, `useSearchViewModel`, `useAsyncData`
+- Model and services: `models/product.ts`, `services/productService.ts`, `services/mockProducts.ts`
+- Utils: `utils/productFilters.ts` (filtering and validation), `utils/format.ts`
+- Shared base used by the whole team: `theme/`, `components/`
+
+Validation and error handling in this part:
+
+- The search box rejects text over 50 characters and the characters `< > { }`.
+- The price filter accepts whole numbers only, up to 100,000, and the minimum must not exceed the maximum. The sheet stays open and shows the error until the input is fixed.
+- Add to cart checks stock, flavor, size and quantity (1 to 10) before accepting.
+- Every screen shows a loading state, an empty state and an error state with "Try again".
+- To demo the error state, call `setSimulateNetworkErrors(true)` from `src/services/productService.ts`.
+
+### Notes for teammates
+
+- **Saif (Cart)**: `useProductDetailsViewModel.ts` has a `TODO` where Add to cart should call your `CartContext`.
+- **Everyone**: add your tab to `src/app/(tabs)/_layout.tsx` and stacked screens to `src/app/_layout.tsx`. Reuse `components/` and `theme/` so the styling stays consistent.
+- **Unit test candidates** (Phase 2): `filterProducts`, `validatePriceRange` and `validateQuery` in `utils/productFilters.ts` are pure functions and easy to test.
 
 ## Mohamed Salim
 

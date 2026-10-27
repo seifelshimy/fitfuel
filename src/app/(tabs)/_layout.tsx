@@ -1,4 +1,5 @@
 // Bottom tab bar for the whole team:
+// Ahmed Mohamed: Home, Search
 // Mohamed Salim: Fitness Profile, Goals & Recs, Barcode Scan
 // Seif Elshimy: Wishlist, Reminders, Admin
 // Saif Nasr: Cart (with a live item count badge), Orders
@@ -12,8 +13,8 @@ import { useCartViewModel } from '@/viewmodels/useCartViewModel';
 type IconName = React.ComponentProps<typeof Ionicons>['name'];
 
 function tabIcon(name: IconName, focusedName: IconName = name) {
-  return ({ color, focused }: { color: string; focused: boolean }) => (
-    <Ionicons name={focused ? focusedName : name} size={22} color={color} />
+  return ({ color, focused }: { color: unknown; focused: boolean }) => (
+    <Ionicons name={focused ? focusedName : name} size={22} color={color as string} />
   );
 }
 
@@ -31,6 +32,14 @@ export default function TabsLayout() {
         sceneStyle: { backgroundColor: colors.background },
       }}
     >
+      <Tabs.Screen
+        name="index"
+        options={{ title: 'Home', tabBarIcon: tabIcon('home-outline', 'home') }}
+      />
+      <Tabs.Screen
+        name="search"
+        options={{ title: 'Search', tabBarIcon: tabIcon('search-outline', 'search') }}
+      />
       <Tabs.Screen
         name="profile"
         options={{ title: 'Profile', tabBarIcon: tabIcon('body-outline', 'body') }}
