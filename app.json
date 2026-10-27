@@ -23,7 +23,13 @@
     },
     "plugins": [
       "expo-router",
-      "expo-status-bar"
+      "expo-status-bar",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "FitFuel uses your location to pin the delivery address for your order."
+        }
+      ]
     ],
     "scheme": "fitfuel",
     "experiments": {

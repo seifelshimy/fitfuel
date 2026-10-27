@@ -44,8 +44,6 @@ yarn-error.*
 .env
 .env.*
 !.env.example
-.env
-node_modules/
-.expo/
 
+# Claude Code settings
 .claude/
