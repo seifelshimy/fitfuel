@@ -1,5 +1,5 @@
-// Root navigator. The tab bar lives in (tabs)/; product details, checkout and
-// reviews are stacked on top. The providers share the fitness profile, the cart and the
+// Root navigator. The tab bar lives in (tabs)/; product details and checkout
+// are stacked on top. The providers share the fitness profile, the cart and the
 // wishlist across every screen.
 
 import React from 'react';
@@ -30,7 +30,6 @@ export default function RootLayout() {
               <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
               <Stack.Screen name="product/[id]" options={{ title: '' }} />
               <Stack.Screen name="checkout" options={{ title: 'Checkout' }} />
-              <Stack.Screen name="review/[productId]" options={{ title: 'Reviews' }} />
             </Stack>
           </WishlistProvider>
         </CartProvider>
