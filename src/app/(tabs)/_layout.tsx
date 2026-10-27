@@ -2,8 +2,8 @@
 // Ahmed Mohamed: Home, Search
 // Mohamed Salim: Fitness Profile, Goals & Recs, Barcode Scan
 // Saif Nasr: Cart (with a live item count badge), Orders
-// Seif Elshimy's Wishlist, Reminders and Admin screens are picked up by Expo Router
-// automatically, because his branch did not include tab settings for them.
+// Seif Elshimy: Wishlist, Reminders, Admin panel (his branch had no tab settings, so
+// they use his screens' own titles and icons; Expo Router hides unlisted tabs)
 
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
@@ -87,6 +87,33 @@ export default function TabsLayout() {
           title: 'Orders',
           tabBarIcon: ({ color, focused }) => (
             <Ionicons name={focused ? 'receipt' : 'receipt-outline'} size={22} color={color as string} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="wishlist"
+        options={{
+          title: 'Wishlist',
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="heart-outline" size={22} color={color as string} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="reminders"
+        options={{
+          title: 'Reminders',
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="alarm-outline" size={22} color={color as string} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="admin"
+        options={{
+          title: 'Admin panel',
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="cube-outline" size={22} color={color as string} />
           ),
         }}
       />
