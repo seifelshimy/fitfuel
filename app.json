@@ -29,7 +29,8 @@
         {
           "locationWhenInUsePermission": "FitFuel uses your location to pin the delivery address for your order."
         }
-      ]
+      ],
+      "expo-font"
     ],
     "scheme": "fitfuel",
     "experiments": {
